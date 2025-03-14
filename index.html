@@ -58,11 +58,16 @@
     </script>
 </head>
 <body>
-    <!-- Audio Player -->
-    <audio autoplay loop>
-        <source src="file:///C:/Users/tarahan/Downloads/WhatsApp%20Audio%202025-03-14%20at%2018.47.26_d5d9b587%20(3).mp3?raw=true" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+   <audio id="myAudio" autoplay loop muted>
+    <source src="file:///C:/Users/tarahan/Downloads/WhatsApp%20Audio%202025-03-14%20at%2018.47.26_d5d9b587%20(3).mp3?raw=true" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<script>
+    window.onload = function() {
+        var audio = document.getElementById('myAudio');
+        audio.muted = false;  // Unmute the audio
+    };
+</script>
 
     <div class="container">
         <h1>Landing Page Headline</h1>
