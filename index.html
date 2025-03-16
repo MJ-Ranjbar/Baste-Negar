@@ -150,18 +150,17 @@
             modal.style.display = "none";
         }
 
-        window.onload = function() {
-            // Initialize the audio with muted autoplay
-            var audio = document.getElementById('myAudio');
-            audio.muted = true;  // Initially muted for autoplay
-            audio.play();  // Start playing the audio automatically
-        };
+       // Play the audio when the page loads, but keep it muted initially
+window.onload = function() {
+    var audio = document.getElementById('myAudio');
+    audio.play();  // Start playing the audio automatically (muted)
+};
 
-        // Unmute the audio after user interaction (click anywhere)
-        document.body.addEventListener("click", function() {
-            var audio = document.getElementById('myAudio');
-            audio.muted = false;  // Unmute the audio
-        });
+// Unmute the audio after user clicks anywhere on the page
+document.body.addEventListener("click", function() {
+    var audio = document.getElementById('myAudio');
+    audio.muted = false;  // Unmute the audio
+});
     </script>
 </head>
 <body>
