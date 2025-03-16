@@ -96,28 +96,14 @@
             border-radius: 10px;
         }
 
-        .close {
-            color: #fff;
-            font-size: 30px;
-            font-weight: bold;
-            position: absolute;
-            top: 10px;
-            right: 25px;
-            cursor: pointer;
+        /* Text under modal image */
+        #modalText {
+            color: white; 
+            font-size: 4em; /* Increased font size */
+            margin-top: 15px;
+            font-weight: bold; /* Make the text bold for better visibility */
         }
 
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
-#modalText {
-    color: white; 
-    font-size: 2em; /* Increased font size */
-    margin-top: 15px;
-    font-weight: bold; /* Make the text bold for better visibility */
-}
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             body {
@@ -152,10 +138,12 @@
             modalText.textContent = text; // Set the text under the image
         }
 
-        // Close the modal when the user clicks on the close button
-        function closeModal() {
+        // Close the modal when the user clicks anywhere outside the modal content (background click)
+        window.onclick = function(event) {
             var modal = document.getElementById("myModal");
-            modal.style.display = "none";
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
 
         // On page load, start the audio muted (this works even with autoplay and muted enabled)
@@ -191,27 +179,27 @@
     <!-- Main Content -->
     <div class="container">
         <div class="gallery">
-            <div class="gallery-item" onclick="showSubImage('جامه دران-min.jpg', ' در شبستان بدون جامه های پر زرق و برق')">
+            <div class="gallery-item" onclick="showSubImage('جامه دران-min.jpg', 'در شبستان بدون جامه های پر زرق و برق')">
                 <img src="A.jpg?raw=true" alt="Image 1">
                 <div class="name">جامه دران</div>
             </div>
 
-            <div class="gallery-item" onclick="showSubImage('گشایش-min.jpg', ' کنار محراب شاید به خدا نزدیک تر باشیم یه گشایش پیش بیاد')">
+            <div class="gallery-item" onclick="showSubImage('گشایش-min.jpg', 'کنار محراب شاید به خدا نزدیک تر باشیم یه گشایش پیش بیاد')">
                 <img src="B.jpg?raw=true" alt="Image 2">
                 <div class="name">گشایش</div>
             </div>
 
-            <div class="gallery-item" onclick="showSubImage('عشاق.jpg', ' شاخه‌ای نداره از جایی چیده نشده تنهاس')">
+            <div class="gallery-item" onclick="showSubImage('عشاق.jpg', 'شاخه‌ای نداره از جایی چیده نشده تنهاس')">
                 <img src="C.jpg?raw=true" alt="Image 3">
                 <div class="name">عشاق</div>
             </div>
 
-            <div class="gallery-item" onclick="showSubImage('نغمه-min.jpg', ' ورود به مسجد نغمه‌ی عشق فرودش اوجه')">
+            <div class="gallery-item" onclick="showSubImage('نغمه-min.jpg', 'ورود به مسجد نغمه‌ی عشق فرودش اوجه')">
                 <img src="E.jpg?raw=true" alt="Image 4">
                 <div class="name">نغمه</div>
             </div>
 
-            <div class="gallery-item" onclick="showSubImage('محیر-min.jpg', ' مسجد نصیرالملک وارد بشی متحیر میشی')">
+            <div class="gallery-item" onclick="showSubImage('محیر-min.jpg', 'مسجد نصیرالملک وارد بشی متحیر میشی')">
                 <img src="G.jpg?raw=true" alt="Image 5">
                 <div class="name">محیر</div>
             </div>
@@ -225,11 +213,10 @@
 
     <!-- The Modal for larger image -->
     <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
         <div class="modal-content">
             <img id="img01" alt="Sub Image">
             <!-- Text displayed under the modal image -->
-            <div id="modalText" style="color: white; font-size: 1.2em; margin-top: 15px;"></div>
+            <div id="modalText" style="color: white; font-size: 2em; margin-top: 15px; font-weight: bold;"></div>
         </div>
     </div>
 
