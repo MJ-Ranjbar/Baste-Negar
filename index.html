@@ -127,49 +127,45 @@
         }
     </style>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let audioPlayed = false; // Variable to track if the audio has been played
+        // Ensure showSubImage function is defined before being called
+        function showSubImage(src, text) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            var modalText = document.getElementById("modalText");
 
-            // When the user clicks on the image, show the modal and display the sub-image
-            function showSubImage(src, text) {
-                var modal = document.getElementById("myModal");
-                var modalImg = document.getElementById("img01");
-                var modalText = document.getElementById("modalText");
+            modal.style.display = "block";
+            modalImg.src = src;
+            modalText.textContent = text; // Set the text under the image
+        }
 
-                modal.style.display = "block";
-                modalImg.src = src;
-                modalText.textContent = text; // Set the text under the image
+        // Close the modal when the user clicks anywhere outside the modal content (background click)
+        window.onclick = function(event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
+        }
 
-            // Close the modal when the user clicks anywhere outside the modal content (background click)
-            window.onclick = function(event) {
-                var modal = document.getElementById("myModal");
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-
-            // Play and unmute audio once the user interacts with the page
-            document.body.addEventListener("click", function() {
-                if (!audioPlayed) {  // Play audio only once
-                    var audio = document.getElementById('myAudio');
-                    if (audio) {
-                        audio.muted = false;  // Unmute the audio
-                        audio.play();  // Play the audio after unmute
-                        audioPlayed = true;  // Ensure audio only plays once after interaction
-                    }
-                }
-            });
-
-            // Play the audio automatically when the page loads (muted initially)
-            window.onload = function() {
+        // Audio Play on User Interaction (after clicking on the page)
+        let audioPlayed = false; // Variable to track if audio has been played
+        document.body.addEventListener("click", function() {
+            if (!audioPlayed) {
                 var audio = document.getElementById('myAudio');
                 if (audio) {
-                    audio.play(); // Play audio automatically (muted initially)
+                    audio.muted = false;  // Unmute the audio
+                    audio.play();  // Play the audio after unmute
+                    audioPlayed = true;  // Mark audio as played
                 }
-            };
-
+            }
         });
+
+        // Play the audio automatically when the page loads (muted initially)
+        window.onload = function() {
+            var audio = document.getElementById('myAudio');
+            if (audio) {
+                audio.play(); // Play audio automatically (muted initially)
+            }
+        };
     </script>
 </head>
 <body>
