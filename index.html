@@ -149,15 +149,21 @@
             var modal = document.getElementById("myModal");
             modal.style.display = "none";
         }
+
+        window.onload = function() {
+            var audio = document.getElementById('myAudio');
+            audio.muted = false;  // Unmute the audio after page load
+            audio.play();  // Start playing the audio automatically
+        };
     </script>
 </head>
 <body>
     <!-- Play Button to Trigger Music -->
     <button onclick="document.getElementById('myAudio').play()">Play Music</button>
 
-    <!-- Audio Element -->
-    <audio id="myAudio" loop>
-        <source src="https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/WhatsApp%20Audio%202025-03-14%20at%2018.47.26_d5d9b587.mp3?raw=true" type="audio/mpeg">
+    <!-- Audio Element with autoplay and muted initially for browsers that block autoplay -->
+    <audio id="myAudio" autoplay muted loop>
+        <source src="WhatsApp Audio 2025-03-14 at 18.47.26_d5d9b587.mp3?raw=true" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
@@ -165,9 +171,9 @@
         window.onload = function() {
             var audio = document.getElementById('myAudio');
             audio.muted = false;  // Unmute the audio after page load
+            audio.play();  // Start playing the audio automatically
         };
     </script>
-
     <!-- Header with White Background -->
     <div class="header-container">
         <h1>بسته نگار گوشه ای از دستگاه یک نگاره</h1>
