@@ -5,24 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
     <style>
-       body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-image: url('https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/IMG_20250314_201126_363.jpg?raw=true');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    text-align: center;
-    color: white;
-}
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/IMG_20250314_201126_363.jpg?raw=true');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            text-align: center;
+            color: white;
+        }
 
-@media (max-width: 768px) {
-    body {
-        background-size: cover;
-        background-position: center center;
-    }
-}
-         .header-container {
+        /* Header container with white background */
+        .header-container {
             background-color: white; /* White background for the header */
             color: black; /* Black text */
             padding: 20px 30px; /* Add some padding */
@@ -30,13 +25,17 @@
             max-width: 80%; /* Limit the width of the header container */
             margin: 20px auto; /* Center align */
         }
+
+        h1 {
+            font-size: 3em;
+            color: black; /* Black header text */
+        }
+
         .container {
             padding: 50px;
         }
-        h1 {
-            font-size: 3em;
-            color: black;
-        }
+
+        /* Gallery styling */
         .gallery {
             display: flex;
             justify-content: center;
@@ -44,28 +43,46 @@
             gap: 20px;
             margin-top: 30px;
         }
+
         .gallery-item {
             cursor: pointer;
         }
+
         .gallery-item img {
             width: 150px;
             height: 150px;
             object-fit: cover;
             border-radius: 10px;
         }
+
         .name {
             margin-top: 10px;
             font-size: 1.2em;
         }
+
         .hidden-section {
             display: none;
             margin-top: 50px;
         }
+
         .hidden-section img {
             width: 120px;
             height: 120px;
             object-fit: cover;
             border-radius: 10px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            body {
+                background-size: cover;
+                background-position: center center;
+            }
+
+            .header-container {
+                width: 90%; /* Increase width for smaller screens */
+                padding: 15px 20px; /* Reduce padding for mobile screens */
+            }
         }
     </style>
     <script>
@@ -76,73 +93,15 @@
     </script>
 </head>
 <body>
-<!-- Play Button to Trigger Music -->
-<button onclick="document.getElementById('myAudio').play()">Play Music</button>
+    <!-- Play Button to Trigger Music -->
+    <button onclick="document.getElementById('myAudio').play()">Play Music</button>
 
-<!-- Audio Element -->
-<audio id="myAudio" loop>
-    <source src="https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/WhatsApp%20Audio%202025-03-14%20at%2018.47.26_d5d9b587.mp3?raw=true" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
+    <!-- Audio Element -->
+    <audio id="myAudio" loop>
+        <source src="https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/WhatsApp%20Audio%202025-03-14%20at%2018.47.26_d5d9b587.mp3?raw=true" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
-<script>
-    window.onload = function() {
-        var audio = document.getElementById('myAudio');
-        audio.muted = false;  // Unmute the audio after page load
-    };
-</script>
-
-<!-- Main Content -->
-<div class="container">
-    <h1>بسته نگار<br>گوشه ای از دستگاه یک نگاره</h1>
-    <div class="gallery">
-        <div class="gallery-item" onclick="showSection('section1')">
-            <img src="https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/IMG_20250314_201126_363.jpg?raw=true" alt="Image 1">
-            <div class="name">Image 1</div>
-        </div>
-        <div class="gallery-item" onclick="showSection('section2')">
-            <img src="https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/IMG_20250314_201126_363.jpg?raw=true" alt="Image 2">
-            <div class="name">Image 2</div>
-        </div>
-        <div class="gallery-item" onclick="showSection('section3')">
-            <img src="https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/IMG_20250314_201126_363.jpg?raw=true" alt="Image 3">
-            <div class="name">Image 3</div>
-        </div>
-        <div class="gallery-item" onclick="showSection('section4')">
-            <img src="https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/IMG_20250314_201126_363.jpg?raw=true" alt="Image 4">
-            <div class="name">Image 4</div>
-        </div>
-        <div class="gallery-item" onclick="showSection('section5')">
-            <img src="https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/IMG_20250314_201126_363.jpg?raw=true" alt="Image 5">
-            <div class="name">Image 5</div>
-        </div>
-    </div>
-
-    <!-- Hidden Sections -->
-    <div id="section1" class="hidden-section">
-        <h2>More Images for Image 1</h2>
-        <img src="sub1.jpg" alt="Sub 1">
-        <div class="name">Sub 1</div>
-        <img src="sub2.jpg" alt="Sub 2">
-        <div class="name">Sub 2</div>
-    </div>
-    
-    <div id="section2" class="hidden-section">
-        <h2>More Images for Image 2</h2>
-        <img src="sub3.jpg" alt="Sub 3">
-        <div class="name">Sub 3</div>
-        <img src="sub4.jpg" alt="Sub 4">
-        <div class="name">Sub 4</div>
-    </div>
-    
-    <div id="section3" class="hidden-section">
-        <h2>More Images for Image 3</h2>
-        <img src="sub5.jpg" alt="Sub 5">
-        <div class="name">Sub 5</div>
-        <img src="sub6.jpg" alt="Sub 6">
-        <div class="name">Sub 6</div>
-    </div>
-</div>
-
-</body>
-</html>
+    <script>
+        window.onload = function() {
+            var audio = document.getElementBy
