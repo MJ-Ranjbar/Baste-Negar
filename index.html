@@ -127,40 +127,42 @@
         }
     </style>
     <script>
-        // When the user clicks on the image, show the modal and display the sub-image
-        function showSubImage(src, text) {
-            var modal = document.getElementById("myModal");
-            var modalImg = document.getElementById("img01");
-            var modalText = document.getElementById("modalText");
+        document.addEventListener("DOMContentLoaded", function() {
+            // When the user clicks on the image, show the modal and display the sub-image
+            function showSubImage(src, text) {
+                var modal = document.getElementById("myModal");
+                var modalImg = document.getElementById("img01");
+                var modalText = document.getElementById("modalText");
 
-            modal.style.display = "block";
-            modalImg.src = src;
-            modalText.textContent = text; // Set the text under the image
-        }
-
-        // Close the modal when the user clicks anywhere outside the modal content (background click)
-        window.onclick = function(event) {
-            var modal = document.getElementById("myModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
+                modal.style.display = "block";
+                modalImg.src = src;
+                modalText.textContent = text; // Set the text under the image
             }
-        }
 
-        // On page load, start the audio muted (this works even with autoplay and muted enabled)
-        window.onload = function() {
+            // Close the modal when the user clicks anywhere outside the modal content (background click)
+            window.onclick = function(event) {
+                var modal = document.getElementById("myModal");
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Audio Play on User Interaction (after clicking on the page)
             var audio = document.getElementById('myAudio');
-            if (audio) {
-                audio.play();  // Play the audio automatically (muted initially)
-            }
-        };
+            document.body.addEventListener("click", function() {
+                if (audio) {
+                    audio.muted = false;  // Unmute the audio
+                    audio.play();  // Ensure the audio continues playing after unmute
+                }
+            });
 
-        // Unmute the audio after the user clicks anywhere on the page
-        document.body.addEventListener("click", function() {
-            var audio = document.getElementById('myAudio');
-            if (audio) {
-                audio.muted = false;  // Unmute the audio
-                audio.play();  // Ensure the audio continues playing after unmute
-            }
+            // Play the audio automatically when the page loads (muted initially)
+            window.onload = function() {
+                if (audio) {
+                    audio.play(); // Play audio automatically (muted initially)
+                }
+            };
+
         });
     </script>
 </head>
