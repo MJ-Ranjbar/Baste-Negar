@@ -136,20 +136,38 @@
         }
     </style>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // On page load, start the audio muted (this works even with autoplay and muted enabled)
+        // When the user clicks on the image, show the modal and display the sub-image
+        function showSubImage(src, text) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            var modalText = document.getElementById("modalText");
+
+            modal.style.display = "block";
+            modalImg.src = src;
+            modalText.textContent = text; // Set the text under the image
+        }
+
+        // Close the modal when the user clicks on the close button
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // On page load, start the audio muted (this works even with autoplay and muted enabled)
+        window.onload = function() {
             var audio = document.getElementById('myAudio');
             if (audio) {
                 audio.play();  // Play the audio automatically (muted initially)
             }
+        };
 
-            // Unmute the audio after the user clicks anywhere on the page
-            document.body.addEventListener("click", function() {
-                if (audio) {
-                    audio.muted = false;  // Unmute the audio
-                    audio.play();  // Ensure the audio continues playing after unmute
-                }
-            });
+        // Unmute the audio after the user clicks anywhere on the page
+        document.body.addEventListener("click", function() {
+            var audio = document.getElementById('myAudio');
+            if (audio) {
+                audio.muted = false;  // Unmute the audio
+                audio.play();  // Ensure the audio continues playing after unmute
+            }
         });
     </script>
 </head>
@@ -168,32 +186,32 @@
     <!-- Main Content -->
     <div class="container">
         <div class="gallery">
-            <div class="gallery-item" onclick="showSubImage('جامه دران-min.jpg')">
+            <div class="gallery-item" onclick="showSubImage('جامه دران-min.jpg', 'This is جامه دران image.')">
                 <img src="A.jpg?raw=true" alt="Image 1">
                 <div class="name">جامه دران</div>
             </div>
 
-            <div class="gallery-item" onclick="showSubImage('گشایش-min.jpg')">
+            <div class="gallery-item" onclick="showSubImage('گشایش-min.jpg', 'This is گشایش image.')">
                 <img src="B.jpg?raw=true" alt="Image 2">
                 <div class="name">گشایش</div>
             </div>
 
-            <div class="gallery-item" onclick="showSubImage('عشاق.jpg')">
+            <div class="gallery-item" onclick="showSubImage('عشاق.jpg', 'This is عشاق image.')">
                 <img src="C.jpg?raw=true" alt="Image 3">
                 <div class="name">عشاق</div>
             </div>
 
-            <div class="gallery-item" onclick="showSubImage('نغمه-min.jpg')">
+            <div class="gallery-item" onclick="showSubImage('نغمه-min.jpg', 'This is نغمه image.')">
                 <img src="E.jpg?raw=true" alt="Image 4">
                 <div class="name">نغمه</div>
             </div>
 
-            <div class="gallery-item" onclick="showSubImage('محیر-min.jpg')">
+            <div class="gallery-item" onclick="showSubImage('محیر-min.jpg', 'This is محیر image.')">
                 <img src="G.jpg?raw=true" alt="Image 5">
                 <div class="name">محیر</div>
             </div>
 
-            <div class="gallery-item" onclick="showSubImage('شهناز-min.jpg')">
+            <div class="gallery-item" onclick="showSubImage('شهناز-min.jpg', 'This is شهناز image.')">
                 <img src="F.jpg?raw=true" alt="Image 6">
                 <div class="name">شهناز</div>
             </div>
@@ -205,6 +223,8 @@
         <span class="close" onclick="closeModal()">&times;</span>
         <div class="modal-content">
             <img id="img01" alt="Sub Image">
+            <!-- Text displayed under the modal image -->
+            <div id="modalText" style="color: white; font-size: 1.2em; margin-top: 15px;"></div>
         </div>
     </div>
 
