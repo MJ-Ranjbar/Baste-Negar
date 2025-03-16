@@ -70,19 +70,47 @@
             width: 100%; /* Ensure the text takes full width of the container */
         }
 
-        /* Hidden Section Styling (sub-images) */
-        .hidden-section {
-            display: none; /* Initially hide sub-images */
-            margin-top: 10px;
+        /* Modal Style */
+        .modal {
+            display: none;  /* Initially hidden */
+            position: fixed;
+            z-index: 1; /* Stay on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.7); /* Background overlay */
             text-align: center;
         }
 
-        .hidden-section img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
+        .modal-content {
+            margin: 15% auto;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
             border-radius: 10px;
-            margin: 5px;
+        }
+
+        .close {
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         /* Mobile responsiveness */
@@ -108,13 +136,18 @@
         }
     </style>
     <script>
-        function toggleSubImage(id) {
-            // Get the hidden section under the clicked image
-            var subImage = document.getElementById(id);
-            var isVisible = subImage.style.display === 'block';
+        function showSubImage(src) {
+            // Show the modal and display the clicked sub-image
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            modal.style.display = "block";
+            modalImg.src = src;
+        }
 
-            // Toggle the display of the sub-image section
-            subImage.style.display = isVisible ? 'none' : 'block';
+        // Close the modal when the user clicks on the close button
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
         }
     </script>
 </head>
@@ -143,65 +176,43 @@
     <!-- Main Content -->
     <div class="container">
         <div class="gallery">
-            <div class="gallery-item" onclick="toggleSubImage('section1')">
+            <div class="gallery-item" onclick="showSubImage('جامه دران-min.jpg')">
                 <img src="A.jpg?raw=true" alt="Image 1">
                 <div class="name">جامه دران</div>
-                <!-- Hidden Sub-image -->
-                <div id="section1" class="hidden-section">
-                    <img src="جامه دران-min.jpg" alt="Sub 1">
-                    <div class="name">Sub 1</div>
-                </div>
             </div>
 
-            <div class="gallery-item" onclick="toggleSubImage('section2')">
+            <div class="gallery-item" onclick="showSubImage('گشایش-min.jpg')">
                 <img src="B.jpg?raw=true" alt="Image 2">
                 <div class="name">گشایش</div>
-                <!-- Hidden Sub-image -->
-                <div id="section2" class="hidden-section">
-                    <img src="گشایش-min.jpg" alt="Sub 3">
-                    <div class="name">Sub 3</div>
-                </div>
             </div>
 
-            <div class="gallery-item" onclick="toggleSubImage('section3')">
+            <div class="gallery-item" onclick="showSubImage('عشاق.jpg')">
                 <img src="C.jpg?raw=true" alt="Image 3">
                 <div class="name">عشاق</div>
-                <!-- Hidden Sub-image -->
-                <div id="section3" class="hidden-section">
-                    <img src="عشاق.jpg" alt="Sub 5">
-                    <div class="name">Sub 5</div>
-                </div>
             </div>
 
-            <div class="gallery-item" onclick="toggleSubImage('section4')">
+            <div class="gallery-item" onclick="showSubImage('نغمه-min.jpg')">
                 <img src="E.jpg?raw=true" alt="Image 4">
                 <div class="name">نغمه</div>
-                <!-- Hidden Sub-image -->
-                <div id="section4" class="hidden-section">
-                    <img src="نغمه-min.jpg" alt="Sub 6">
-                    <div class="name">Sub 6</div>
-                </div>
             </div>
 
-            <div class="gallery-item" onclick="toggleSubImage('section5')">
+            <div class="gallery-item" onclick="showSubImage('محیر-min.jpg')">
                 <img src="G.jpg?raw=true" alt="Image 5">
                 <div class="name">محیر</div>
-                <!-- Hidden Sub-image -->
-                <div id="section5" class="hidden-section">
-                    <img src="محیر-min.jpg" alt="Sub 7">
-                    <div class="name">Sub 7</div>
-                </div>
             </div>
 
-            <div class="gallery-item" onclick="toggleSubImage('section6')">
+            <div class="gallery-item" onclick="showSubImage('شهناز-min.jpg')">
                 <img src="F.jpg?raw=true" alt="Image 6">
                 <div class="name">شهناز</div>
-                <!-- Hidden Sub-image -->
-                <div id="section6" class="hidden-section">
-                    <img src="شهناز-min.jpg" alt="Sub 8">
-                    <div class="name">Sub 8</div>
-                </div>
             </div>
+        </div>
+    </div>
+
+    <!-- The Modal for larger image -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="img01" alt="Sub Image">
         </div>
     </div>
 
