@@ -136,36 +136,21 @@
         }
     </style>
     <script>
-        function showSubImage(src) {
-            // Show the modal and display the clicked sub-image
-            var modal = document.getElementById("myModal");
-            var modalImg = document.getElementById("img01");
-            modal.style.display = "block";
-            modalImg.src = src;
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            // On page load, start the audio muted (this works even with autoplay and muted enabled)
+            var audio = document.getElementById('myAudio');
+            if (audio) {
+                audio.play();  // Play the audio automatically (muted initially)
+            }
 
-        // Close the modal when the user clicks on the close button
-        function closeModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = "none";
-        }
-
-       // On page load, start the audio muted (this works even with autoplay and muted enabled)
-window.onload = function() {
-    var audio = document.getElementById('myAudio');
-    if (audio) {
-        audio.play();  // Play the audio automatically (muted initially)
-    }
-};
-
-// Unmute the audio after the user clicks anywhere on the page
-document.body.addEventListener("click", function() {
-    var audio = document.getElementById('myAudio');
-    if (audio) {
-        audio.muted = false;  // Unmute the audio
-        audio.play();  // Ensure the audio continues playing after unmute
-    }
-});
+            // Unmute the audio after the user clicks anywhere on the page
+            document.body.addEventListener("click", function() {
+                if (audio) {
+                    audio.muted = false;  // Unmute the audio
+                    audio.play();  // Ensure the audio continues playing after unmute
+                }
+            });
+        });
     </script>
 </head>
 <body>
@@ -174,6 +159,7 @@ document.body.addEventListener("click", function() {
         <source src="WhatsApp Audio 2025-03-14 at 18.47.26_d5d9b587.mp3?raw=true" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+
     <!-- Header with White Background -->
     <div class="header-container">
         <h1>بسته نگار گوشه ای از دستگاه یک نگاره</h1>
