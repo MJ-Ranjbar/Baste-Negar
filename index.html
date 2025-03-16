@@ -150,16 +150,21 @@
             modal.style.display = "none";
         }
 
-       // Play the audio when the page loads, but keep it muted initially
+       // On page load, start the audio muted (this works even with autoplay and muted enabled)
 window.onload = function() {
     var audio = document.getElementById('myAudio');
-    audio.play();  // Start playing the audio automatically (muted)
+    if (audio) {
+        audio.play();  // Play the audio automatically (muted initially)
+    }
 };
 
-// Unmute the audio after user clicks anywhere on the page
+// Unmute the audio after the user clicks anywhere on the page
 document.body.addEventListener("click", function() {
     var audio = document.getElementById('myAudio');
-    audio.muted = false;  // Unmute the audio
+    if (audio) {
+        audio.muted = false;  // Unmute the audio
+        audio.play();  // Ensure the audio continues playing after unmute
+    }
 });
     </script>
 </head>
