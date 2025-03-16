@@ -87,7 +87,9 @@
     </style>
     <script>
         function showSection(id) {
+            // Hide all sections first
             document.querySelectorAll('.hidden-section').forEach(section => section.style.display = 'none');
+            // Display the selected section
             document.getElementById(id).style.display = 'block';
         }
     </script>
@@ -104,4 +106,66 @@
 
     <script>
         window.onload = function() {
-            var audio = document.getElementBy
+            var audio = document.getElementById('myAudio');
+            audio.muted = false;  // Unmute the audio after page load
+        };
+    </script>
+
+    <!-- Header with White Background -->
+    <div class="header-container">
+        <h1>بسته نگار<br>گوشه ای از دستگاه یک نگاره</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="gallery">
+            <div class="gallery-item" onclick="showSection('section1')">
+                <img src="https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/IMG_20250314_201126_363.jpg?raw=true" alt="Image 1">
+                <div class="name">Image 1</div>
+            </div>
+            <div class="gallery-item" onclick="showSection('section2')">
+                <img src="https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/IMG_20250314_201126_363.jpg?raw=true" alt="Image 2">
+                <div class="name">Image 2</div>
+            </div>
+            <div class="gallery-item" onclick="showSection('section3')">
+                <img src="https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/IMG_20250314_201126_363.jpg?raw=true" alt="Image 3">
+                <div class="name">Image 3</div>
+            </div>
+            <div class="gallery-item" onclick="showSection('section4')">
+                <img src="https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/IMG_20250314_201126_363.jpg?raw=true" alt="Image 4">
+                <div class="name">Image 4</div>
+            </div>
+            <div class="gallery-item" onclick="showSection('section5')">
+                <img src="https://github.com/MJ-Ranjbar/Baste-Negar/blob/main/IMG_20250314_201126_363.jpg?raw=true" alt="Image 5">
+                <div class="name">Image 5</div>
+            </div>
+        </div>
+
+        <!-- Hidden Sections -->
+        <div id="section1" class="hidden-section">
+            <h2>More Images for Image 1</h2>
+            <img src="sub1.jpg" alt="Sub 1">
+            <div class="name">Sub 1</div>
+            <img src="sub2.jpg" alt="Sub 2">
+            <div class="name">Sub 2</div>
+        </div>
+        
+        <div id="section2" class="hidden-section">
+            <h2>More Images for Image 2</h2>
+            <img src="sub3.jpg" alt="Sub 3">
+            <div class="name">Sub 3</div>
+            <img src="sub4.jpg" alt="Sub 4">
+            <div class="name">Sub 4</div>
+        </div>
+        
+        <div id="section3" class="hidden-section">
+            <h2>More Images for Image 3</h2>
+            <img src="sub5.jpg" alt="Sub 5">
+            <div class="name">Sub 5</div>
+            <img src="sub6.jpg" alt="Sub 6">
+            <div class="name">Sub 6</div>
+        </div>
+    </div>
+
+</body>
+</html>
