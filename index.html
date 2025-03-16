@@ -6,11 +6,12 @@
     <title>Landing Page</title>
     <style>
         @font-face {
-    font-family: 'IranNastaliq'; /* Name of the font */
-    src: url('IranNastaliq.ttf') format('truetype'); /* Path to the font file */
-    font-weight: normal;
-    font-style: normal;
-}
+            font-family: 'IranNastaliq'; /* Name of the font */
+            src: url('IranNastaliq.ttf') format('truetype'); /* Path to the font file */
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             margin: 0;
             font-family: 'IranNastaliq', sans-serif;
@@ -27,11 +28,11 @@
             text-align: center;
         }
 
-      h1 {
-   color: gray; /* White text */
-    font-size: 5em;
-    padding: 10px;
-}
+        h1 {
+            color: gray; /* White text */
+            font-size: 5em;
+            padding: 10px;
+        }
 
         .container {
             padding: 50px;
@@ -48,6 +49,8 @@
 
         .gallery-item {
             cursor: pointer;
+            position: relative; /* Allow absolute positioning for sub-images */
+            text-align: center; /* Center align the text under the image */
         }
 
         .gallery-item img {
@@ -57,24 +60,33 @@
             border-radius: 10px;
         }
 
-       .name {
-    margin-top: 10px; /* Space between image and text */
-    font-size: 1.5em; /* Increase font size */
-    font-weight: bold; /* Bold text for emphasis */
-    text-align: center; /* Center align the text below the image */
-    width: 100%; /* Ensure the text takes full width of the container */
-}
-
-        .hidden-section {
-            display: none;
-            margin-top: 50px;
+        /* Gallery Name Styling */
+        .name {
+            margin-top: 10px; /* Space between image and text */
+            font-size: 1.5em; /* Increase font size */
+            font-weight: bold; /* Bold text for emphasis */
+            text-align: center; /* Center align the text below the image */
+            width: 100%; /* Ensure the text takes full width of the container */
         }
 
+        /* Hidden Section Styling (sub-images) */
+        .hidden-section {
+            display: none;  /* Initially hide sub-images */
+            position: absolute;  /* Position them relative to the parent gallery item */
+            top: 100%;  /* Place the sub-image below the clicked image */
+            left: 0;
+            width: 100%;
+            text-align: center; /* Center the text and images */
+            margin-top: 10px;
+        }
+
+        /* Styling for sub-images */
         .hidden-section img {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             object-fit: cover;
             border-radius: 10px;
+            margin: 5px;
         }
 
         /* Mobile responsiveness */
@@ -88,14 +100,23 @@
                 width: 90%; /* Increase width for smaller screens */
                 padding: 15px 20px; /* Reduce padding for mobile screens */
             }
+
+            h1 {
+                font-size: 2.5em; /* Reduce header size on mobile */
+            }
         }
     </style>
     <script>
         function showSection(id) {
-            // Hide all sections first
-            document.querySelectorAll('.hidden-section').forEach(section => section.style.display = 'none');
-            // Display the selected section
-            document.getElementById(id).style.display = 'block';
+            // Get the clicked gallery item
+            var galleryItem = document.querySelector(`#${id}`).parentElement;
+            
+            // Toggle the display of the corresponding sub-image section under the clicked image
+            var section = document.getElementById(id);
+            section.style.display = section.style.display === 'block' ? 'none' : 'block';
+
+            // Scroll the page to the clicked image and its sub-images
+            galleryItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     </script>
 </head>
@@ -161,34 +182,31 @@
             <h2>More Images for Image 2</h2>
             <img src="sub3.jpg" alt="Sub 3">
             <div class="name">Sub 3</div>
-
         </div>
         
         <div id="section3" class="hidden-section">
             <h2>More Images for Image 3</h2>
             <img src="sub5.jpg" alt="Sub 5">
             <div class="name">Sub 5</div>
-
         </div>
+        
         <div id="section4" class="hidden-section">
-            <h2>More Images for Image 3</h2>
-            <img src="sub5.jpg" alt="Sub 5">
-            <div class="name">Sub 5</div>
-
+            <h2>More Images for Image 4</h2>
+            <img src="sub6.jpg" alt="Sub 6">
+            <div class="name">Sub 6</div>
         </div>
+        
         <div id="section5" class="hidden-section">
-            <h2>More Images for Image 3</h2>
-            <img src="sub5.jpg" alt="Sub 5">
-            <div class="name">Sub 5</div>
-
+            <h2>More Images for Image 5</h2>
+            <img src="sub7.jpg" alt="Sub 7">
+            <div class="name">Sub 7</div>
         </div>
+        
         <div id="section6" class="hidden-section">
-            <h2>More Images for Image 3</h2>
-            <img src="sub5.jpg" alt="Sub 5">
-            <div class="name">Sub 5</div>
-
+            <h2>More Images for Image 6</h2>
+            <img src="sub8.jpg" alt="Sub 8">
+            <div class="name">Sub 8</div>
         </div>
     </div>
-
 </body>
 </html>
