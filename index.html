@@ -152,15 +152,11 @@
 
         window.onload = function() {
             var audio = document.getElementById('myAudio');
-            audio.muted = false;  // Unmute the audio after page load
             audio.play();  // Start playing the audio automatically
         };
     </script>
 </head>
 <body>
-    <!-- Play Button to Trigger Music -->
-    <button onclick="document.getElementById('myAudio').play()">Play Music</button>
-
     <!-- Audio Element with autoplay and muted initially for browsers that block autoplay -->
     <audio id="myAudio" autoplay muted loop>
         <source src="WhatsApp Audio 2025-03-14 at 18.47.26_d5d9b587.mp3?raw=true" type="audio/mpeg">
