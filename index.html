@@ -128,6 +128,8 @@
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            let audioPlayed = false; // Variable to track if the audio has been played
+
             // When the user clicks on the image, show the modal and display the sub-image
             function showSubImage(src, text) {
                 var modal = document.getElementById("myModal");
@@ -147,17 +149,21 @@
                 }
             }
 
-            // Audio Play on User Interaction (after clicking on the page)
-            var audio = document.getElementById('myAudio');
+            // Play and unmute audio once the user interacts with the page
             document.body.addEventListener("click", function() {
-                if (audio) {
-                    audio.muted = false;  // Unmute the audio
-                    audio.play();  // Ensure the audio continues playing after unmute
+                if (!audioPlayed) {  // Play audio only once
+                    var audio = document.getElementById('myAudio');
+                    if (audio) {
+                        audio.muted = false;  // Unmute the audio
+                        audio.play();  // Play the audio after unmute
+                        audioPlayed = true;  // Ensure audio only plays once after interaction
+                    }
                 }
             });
 
             // Play the audio automatically when the page loads (muted initially)
             window.onload = function() {
+                var audio = document.getElementById('myAudio');
                 if (audio) {
                     audio.play(); // Play audio automatically (muted initially)
                 }
