@@ -16,6 +16,9 @@
             margin: 0;
             font-family: 'IranNastaliq', sans-serif;
             background-image: url('BG2.jpg?raw=true');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
         }
 
         /* Header container with white background */
@@ -49,8 +52,7 @@
 
         .gallery-item {
             cursor: pointer;
-            position: relative; /* Allow absolute positioning for sub-images */
-            text-align: center; /* Center align the text under the image */
+            text-align: center;
         }
 
         .gallery-item img {
@@ -60,7 +62,6 @@
             border-radius: 10px;
         }
 
-        /* Gallery Name Styling */
         .name {
             margin-top: 10px; /* Space between image and text */
             font-size: 1.5em; /* Increase font size */
@@ -71,19 +72,14 @@
 
         /* Hidden Section Styling (sub-images) */
         .hidden-section {
-            display: none;  /* Initially hide sub-images */
-            position: absolute;  /* Position them relative to the parent gallery item */
-            top: 100%;  /* Place the sub-image below the clicked image */
-            left: 0;
-            width: 100%;
-            text-align: center; /* Center the text and images */
+            display: none; /* Initially hide sub-images */
             margin-top: 10px;
+            text-align: center;
         }
 
-        /* Styling for sub-images */
         .hidden-section img {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             object-fit: cover;
             border-radius: 10px;
             margin: 5px;
@@ -104,19 +100,21 @@
             h1 {
                 font-size: 2.5em; /* Reduce header size on mobile */
             }
+
+            .gallery-item img {
+                width: 120px;
+                height: 120px;
+            }
         }
     </style>
     <script>
-        function showSection(id) {
-            // Get the clicked gallery item
-            var galleryItem = document.querySelector(`#${id}`).parentElement;
-            
-            // Toggle the display of the corresponding sub-image section under the clicked image
-            var section = document.getElementById(id);
-            section.style.display = section.style.display === 'block' ? 'none' : 'block';
+        function toggleSubImage(id) {
+            // Get the hidden section under the clicked image
+            var subImage = document.getElementById(id);
+            var isVisible = subImage.style.display === 'block';
 
-            // Scroll the page to the clicked image and its sub-images
-            galleryItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Toggle the display of the sub-image section
+            subImage.style.display = isVisible ? 'none' : 'block';
         }
     </script>
 </head>
@@ -145,68 +143,67 @@
     <!-- Main Content -->
     <div class="container">
         <div class="gallery">
-            <div class="gallery-item" onclick="showSection('section1')">
+            <div class="gallery-item" onclick="toggleSubImage('section1')">
                 <img src="A.jpg?raw=true" alt="Image 1">
                 <div class="name">جامه دران</div>
+                <!-- Hidden Sub-image -->
+                <div id="section1" class="hidden-section">
+                    <img src="جامه دران-min.jpg" alt="Sub 1">
+                    <div class="name">Sub 1</div>
+                </div>
             </div>
-            <div class="gallery-item" onclick="showSection('section2')">
+
+            <div class="gallery-item" onclick="toggleSubImage('section2')">
                 <img src="B.jpg?raw=true" alt="Image 2">
                 <div class="name">گشایش</div>
+                <!-- Hidden Sub-image -->
+                <div id="section2" class="hidden-section">
+                    <img src="گشایش-min.jpg" alt="Sub 3">
+                    <div class="name">Sub 3</div>
+                </div>
             </div>
-            <div class="gallery-item" onclick="showSection('section3')">
+
+            <div class="gallery-item" onclick="toggleSubImage('section3')">
                 <img src="C.jpg?raw=true" alt="Image 3">
                 <div class="name">عشاق</div>
+                <!-- Hidden Sub-image -->
+                <div id="section3" class="hidden-section">
+                    <img src="عشاق.jpg" alt="Sub 5">
+                    <div class="name">Sub 5</div>
+                </div>
             </div>
-            <div class="gallery-item" onclick="showSection('section4')">
+
+            <div class="gallery-item" onclick="toggleSubImage('section4')">
                 <img src="E.jpg?raw=true" alt="Image 4">
                 <div class="name">نغمه</div>
+                <!-- Hidden Sub-image -->
+                <div id="section4" class="hidden-section">
+                    <img src="نغمه-min.jpg" alt="Sub 6">
+                    <div class="name">Sub 6</div>
+                </div>
             </div>
-            <div class="gallery-item" onclick="showSection('section5')">
+
+            <div class="gallery-item" onclick="toggleSubImage('section5')">
                 <img src="G.jpg?raw=true" alt="Image 5">
                 <div class="name">محیر</div>
+                <!-- Hidden Sub-image -->
+                <div id="section5" class="hidden-section">
+                    <img src="محیر-min.jpg" alt="Sub 7">
+                    <div class="name">Sub 7</div>
+                </div>
             </div>
-            <div class="gallery-item" onclick="showSection('section6')">
+
+            <div class="gallery-item" onclick="toggleSubImage('section6')">
                 <img src="F.jpg?raw=true" alt="Image 6">
                 <div class="name">شهناز</div>
+                <!-- Hidden Sub-image -->
+                <div id="section6" class="hidden-section">
+                    <img src="شهناز-min.jpg" alt="Sub 8">
+                    <div class="name">Sub 8</div>
+                </div>
             </div>
         </div>
-
-        <!-- Hidden Sections -->
-        <div id="section1" class="hidden-section">
-            <h2>More Images for Image 1</h2>
-            <img src="جامه دران-min.jpg" alt="Sub 1">
-            <div class="name">Sub 1</div>
-        </div>
-        
-        <div id="section2" class="hidden-section">
-            <h2>More Images for Image 2</h2>
-            <img src="گشایش-min.jpg" alt="Sub 3">
-            <div class="name">Sub 3</div>
-        </div>
-        
-        <div id="section3" class="hidden-section">
-            <h2>More Images for Image 3</h2>
-            <img src="sub5.jpg" alt="Sub 5">
-            <div class="name">Sub 5</div>
-        </div>
-        
-        <div id="section4" class="hidden-section">
-            <h2>More Images for Image 4</h2>
-            <img src="نغمه-min.jpg" alt="Sub 6">
-            <div class="name">Sub 6</div>
-        </div>
-        
-        <div id="section5" class="hidden-section">
-            <h2>More Images for Image 5</h2>
-            <img src="محیر-min.jpg" alt="Sub 7">
-            <div class="name">Sub 7</div>
-        </div>
-        
-        <div id="section6" class="hidden-section">
-            <h2>More Images for Image 6</h2>
-            <img src="شهناز-min.jpg" alt="Sub 8">
-            <div class="name">Sub 8</div>
-        </div>
     </div>
+
 </body>
 </html>
